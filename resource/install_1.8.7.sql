@@ -2150,7 +2150,21 @@ CREATE TABLE `fx_tasks_timer` (
   PRIMARY KEY (`timer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+# Dump of table fx_user_status
 
+DROP TABLE IF EXISTS `fx_user_status`;
+
+CREATE TABLE `fx_user_status` (
+	`id` int(10) NOT NULL AUTO_INCREMENT,
+  	`status` varchar(50) DEFAULT NULL,
+	PRIMARY KEY (`id`)
+)
+
+INSERT INTO `fx_user_status` (`status`)
+VALUES
+	('Confirmed'),
+	('Pending'),
+	('Declined')
 
 # Dump of table fx_tax_rates
 # ------------------------------------------------------------

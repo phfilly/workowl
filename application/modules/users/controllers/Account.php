@@ -94,13 +94,14 @@ class Account extends MX_Controller {
 			                'mobile' => $this->input->post('mobile'),
 			                'skype' => $this->input->post('skype'),		
 			                'language' => $this->input->post('language'),		               
-			                'locale' => $this->input->post('locale'),
-			                'hourly_rate' => $this->input->post('hourly_rate')	               
+							'locale' => $this->input->post('locale'),
+							'hourly_rate' => $this->input->post('hourly_rate')             
 			            );
 			if (isset($_POST['department'])) {
 				$profile_data['department'] = json_encode($_POST['department']);
 			}
 			App::update('account_details',array('user_id'=>$user_id),$profile_data); 
+			App::update('users',array('id'=>$user_id), array('verified' => $this->input->post('user_status'))); 
 
 			$data = array(
 				'module' => 'users',
@@ -220,8 +221,14 @@ class Account extends MX_Controller {
 			redirect('users/account');
 		}
 		}else{
-		$data['id'] = $this->uri->segment(4);
-		$this->load->view('modal/edit_login',$data);
+			if($this->input->get('action') != '') {
+				$data['action'] = $this->input->get('action'); 
+				App::update('users',array('id'=>$this->uri->segment(4)), array('verified' => ucfirst($this->input->get('action')))); 
+				redirect('users/account');
+			} else {
+				$data['id'] = $this->uri->segment(4);
+				$this->load->view('modal/edit_login',$data);
+			}
 		}
 	}
 
