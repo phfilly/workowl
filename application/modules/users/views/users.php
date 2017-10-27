@@ -65,8 +65,19 @@
 				<?=lang(User::get_role($user->id))?></span>
 												 </td>
 													<td>
+														<?=$user->verified ?>
 													</td>
 													<td>
+														<?php 
+															if ($user->verified == 'Confirmed') { ?>
+																<i class='fa fa-check'>
+														<?php } else if ($this->verified != 'Pending') { ?>
+																<a href="<?=base_url()?>users/account/auth/<?=$user->id?>/?action=confirmed" class="btn btn-default btn-xs" ><i class='fa fa-check'></i></a>
+																<a href="<?=base_url()?>users/account/auth/<?=$user->id?>/?action=declined" class="btn btn-default btn-xs" ><i class='fa fa-times'></i></a>
+													  	<?php } else { ?>
+															  	<i class='fa fa-times'>
+														<?php }
+													 	?>
 													</td>
 
 													<td class="hidden-sm">

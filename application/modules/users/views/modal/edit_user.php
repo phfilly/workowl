@@ -84,33 +84,23 @@
 				</div>
                                 </div>
 				<div class="form-group">
-				<label class="col-lg-3 control-label">Skype</label>
-				<div class="col-lg-6">
-					<input type="text" class="form-control" value="<?=$info->skype?>" name="skype">
+					<label class="col-lg-3 control-label">Skype</label>
+					<div class="col-lg-6">
+						<input type="text" class="form-control" value="<?=$info->skype?>" name="skype">
+					</div>
 				</div>
-                                </div>
-                         
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label"><?=lang('language')?></label>
-                                    <div class="col-lg-5">
-                                        <select name="language" class="form-control">
-                                        <?php foreach (App::languages() as $lang) : ?>
-                                        <option value="<?=$lang->name?>"<?=($info->language == $lang->name ? ' selected="selected"' : '')?>><?= ucfirst($lang->name)?></option>
-                                        <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                        <label class="col-lg-3 control-label"><?=lang('locale')?></label>
-                                        <div class="col-lg-5">
-                                                <select class="select2-option form-control" name="locale">
-                                                <?php foreach (App::locales() as $loc) : ?>
-                                                <option lang="<?=$loc->code?>" value="<?=$loc->locale?>"<?=($info->locale == $loc->locale ? ' selected="selected"' : '')?>>
-                                                <?=$loc->name?></option>
-                                                <?php endforeach; ?>
-                                                </select>
-                                        </div>
-                                </div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">Verified</label>
+					<div class="col-lg-6">
+						<select name="user_status" class="form-control">
+						<?php
+							foreach (User::user_status() as $key) { ?>
+								<option value="<?=$key->status?>"<?=($user->verified == $key->status ? ' selected="selected"' : '')?>><?=ucfirst($key->status)?></option>
+							<?php }
+						?>          
+						</select>
+					</div>
+				</div>
 		</div>
 		<div class="modal-footer"> <a href="#" class="btn btn-default" data-dismiss="modal"><?=lang('close')?></a> 
 		<button type="submit" class="btn btn-<?=config_item('theme_color');?>"><?=lang('save_changes')?></button>

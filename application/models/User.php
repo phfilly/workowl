@@ -92,6 +92,9 @@ class User extends CI_Model
         return self::$db->get('users')->result();
     }
 
+    static function user_status(){
+        return self::$db->get('user_status')->result();
+    }
     /**
      * Display username or full name if exists
      */
