@@ -192,7 +192,8 @@ class Project extends CI_Model
         return (array_key_exists($setting, $settings)) ? TRUE : FALSE;
     }
 
-    static function permissions(){
+    static function permissions()
+    {
         return self::$db->where(array('id >'=>'0'))->get('project_settings')->result();
     }
 
@@ -200,6 +201,31 @@ class Project extends CI_Model
     static function has_files($project)
     {
         return self::$db->where('project',$project)->get('files')->result();
+    }
+
+    static function get_all_industries()
+    {
+        return self::$db->get('industries')->result();
+    }
+
+    static function project_categories()
+    {
+        return self::$db->get('project_categories')->result();
+    }
+
+    static function project_sub_categories()
+    {
+        return self::$db->get('project_sub_categories')->result();
+    }
+
+    static function project_industry($project)
+    {
+        return self::$db->where('id', $project)->get('industries')->result();
+    }
+
+    static function project_category($project)
+    {
+        return self::$db->where('id', $project)->get('project_categories')->result();
     }
 
     // Get all project bugs
@@ -219,7 +245,6 @@ class Project extends CI_Model
     {
         return self::$db->where('milestone',$id)->get('tasks')->result();
     }
-
 
     // Get all project links
     static function has_links($project)

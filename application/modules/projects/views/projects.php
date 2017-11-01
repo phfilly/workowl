@@ -79,7 +79,9 @@
                     <th class="col-title "><?=lang('status')?></th>
                     <?php } ?>
                     <th><?=lang('team_members')?></th>
-                    <th class="col-date "><?=lang('used_budget')?></th>
+                    <th> Category </th>
+                    <th> Industry </th>
+                    <th> Public </th>
 
         <?php if (User::login_role_name() != 'admin') { ?>
                     <th class=""><?=lang('hours_spent')?></th>
@@ -216,11 +218,19 @@
                        $used_budget = round(($hours / $p->estimate_hours) * 100,2);
                        }else{ $used_budget = NULL; }
                        ?>
-                
-                      <td class="">
+
+                      <?php 
+                        $industry = Project::project_industry($p->industry); 
+                        $category = Project::project_category($p->industry); 
+                      ?>
+
+                       <td><?=$category[0]->name?></td>
+                       <td><?=$industry[0]->name?></td>
+                       <td><?=ucfirst($p->public)?></td>
+                      <!--<td class="">
                       <strong class="<?=($used_budget > 100) ? 'text-danger' : 'text-success'; ?>"><?=($used_budget != NULL) ? $used_budget.' %': 'N/A'?>
                       </strong>
-                        </td>
+                        </td>-->
 
 
 
