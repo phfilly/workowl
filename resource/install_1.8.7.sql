@@ -2158,13 +2158,29 @@ CREATE TABLE `fx_user_status` (
 	`id` int(10) NOT NULL AUTO_INCREMENT,
   	`status` varchar(50) DEFAULT NULL,
 	PRIMARY KEY (`id`)
-)
+);
 
 INSERT INTO `fx_user_status` (`status`)
 VALUES
 	('Confirmed'),
 	('Pending'),
 	('Declined')
+
+# Dump of table fx_user_status
+
+DROP TABLE IF EXISTS `fx_user_type`;
+
+CREATE TABLE `fx_user_type` (
+	`id` int(10) NOT NULL AUTO_INCREMENT,
+  	`type` varchar(50) DEFAULT NULL,
+	PRIMARY KEY (`id`)
+);
+
+INSERT INTO `fx_user_type` (`type`)
+VALUES
+	('Client'),
+	('Consultant')
+
 
 # Dump of table fx_tax_rates
 # ------------------------------------------------------------

@@ -95,6 +95,10 @@ class User extends CI_Model
     static function user_status(){
         return self::$db->get('user_status')->result();
     }
+
+    static function user_types(){
+        return self::$db->get('user_type')->result();
+    }
     /**
      * Display username or full name if exists
      */
