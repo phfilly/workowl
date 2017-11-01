@@ -101,7 +101,10 @@ class Account extends MX_Controller {
 				$profile_data['department'] = json_encode($_POST['department']);
 			}
 			App::update('account_details',array('user_id'=>$user_id),$profile_data); 
-			App::update('users',array('id'=>$user_id), array('verified' => $this->input->post('user_status'))); 
+			App::update('users',array('id'=>$user_id), array(
+														'verified' => $this->input->post('user_status'),
+														'type' => $this->input->post('user_type'),
+													));
 
 			$data = array(
 				'module' => 'users',

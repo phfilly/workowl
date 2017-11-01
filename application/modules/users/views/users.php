@@ -19,6 +19,7 @@
 												<th><?=lang('full_name')?></th>
 												<th><?=lang('company')?> </th>
 												<th><?=lang('role')?> </th>
+												<th> Client Type </th>
 												<th> Status </th>
 												<th> Verify </th>
 												<th class="hidden-sm"><?=lang('date')?> </th>
@@ -64,6 +65,9 @@
 				<span class="<?=$span_badge?>">
 				<?=lang(User::get_role($user->id))?></span>
 												 </td>
+												 	<td>
+													 	<?=$user->type ?>
+													</td>
 													<td>
 														<?=$user->verified ?>
 													</td>

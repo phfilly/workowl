@@ -95,26 +95,7 @@ $captcha = array(
 		<header class="panel-heading text-center"> <strong><?=config_item('login_title')?></strong>
 			<?php  echo modules::run('sidebar/flash_msg');?>  
 		</header>
-                        <?php if(config_item('enable_languages') == 'TRUE'){ ?>
-                            <div class="panel-body text-right clearfix">
-                               
-                              <div class="btn-group dropdown">
-                                <button type="button" class="btn btn-sm dropdown-toggle btn-<?=config_item('theme_color');?>" data-toggle="dropdown" btn-icon="" title="<?=lang('languages')?>"><i class="fa fa-globe"></i></button>
-                                <button type="button" class="btn btn-sm btn-default dropdown-toggle  hidden-nav-xs" data-toggle="dropdown"><?=lang('languages')?> <span class="caret"></span></button>
-                          <!-- Load Languages -->
-                                <ul class="dropdown-menu text-left">
-                                <?php $languages = App::languages(); foreach ($languages as $lang) : if ($lang->active == 1) : ?>
-                                <li>
-                                    <a href="<?=base_url()?>set_language?lang=<?=$lang->name?>" title="<?=ucwords(str_replace("_"," ", $lang->name))?>">
-                                        <img src="<?=base_url()?>resource/images/flags/<?=$lang->icon?>.gif" alt="<?=ucwords(str_replace("_"," ", $lang->name))?>"  /> <?=ucwords(str_replace("_"," ", $lang->name))?>
-                                    </a>
-                                </li>
-                                <?php endif; endforeach; ?>
-                                </ul>
-                              </div>
-                            </div>
-                        <?php } ?>
-                     
+                    
 		<?php 
 		$attributes = array('class' => 'panel-body wrapper-lg');
 		echo form_open($this->uri->uri_string(),$attributes); ?>

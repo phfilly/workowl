@@ -90,6 +90,18 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="col-lg-3 control-label">Client Type</label>
+					<div class="col-lg-6">
+						<select name="user_type" class="form-control">
+						<?php
+							foreach (User::user_types() as $key) { ?>
+								<option value="<?=$key->type?>"<?=($user->type == $key->type ? ' selected="selected"' : '')?>><?=ucfirst($key->type)?></option>
+							<?php }
+						?>          
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="col-lg-3 control-label">Verified</label>
 					<div class="col-lg-6">
 						<select name="user_status" class="form-control">
