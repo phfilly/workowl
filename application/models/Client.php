@@ -48,7 +48,7 @@ class Client extends CI_Model
 	{
 		return self::$db->where('co_id >',0)->order_by('company_name','ASC')->get('companies')->result();
 	}
-
+	
 
 	static function due_amount($company)
 	{

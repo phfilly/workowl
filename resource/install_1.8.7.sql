@@ -2000,6 +2000,10 @@ CREATE TABLE `fx_projects` (
   `pinned` int(11) DEFAULT '0',
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `alert_overdue` int(11) DEFAULT '0',
+  `industry` int(11) NOT NULL,
+  `project_category` int(11) NOT NULL,
+  `project_sub_category` int(11) NOT NULL,
+  `public` varchar(10),
   PRIMARY KEY (`project_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -2180,6 +2184,60 @@ INSERT INTO `fx_user_type` (`type`)
 VALUES
 	('Client'),
 	('Consultant')
+
+# ------------
+
+DROP TABLE IF EXISTS `fx_industries`;
+
+CREATE TABLE `fx_industries` (
+	`id` int(10) NOT NULL AUTO_INCREMENT,
+  	`name` varchar(50) DEFAULT NULL,
+	PRIMARY KEY (`id`)
+);
+
+insert into `fx_industries` (`name`) 
+values ('Advertising and Media'),
+		('Mining'),
+		('Private Equity'),
+		('Retail and consumer goods');
+
+DROP TABLE IF EXISTS `fx_project_categories`;
+
+CREATE TABLE `fx_project_categories` (
+	`id` int(10) NOT NULL AUTO_INCREMENT,
+  	`name` varchar(50) DEFAULT NULL,
+	PRIMARY KEY (`id`)
+);
+
+insert into `fx_project_categories` (`name`) 
+values ('Big Data And Advance Analytics'),
+('Black Economic Empowerment'),
+('Change Management'),
+('Customer Strategy And Marketing'),
+('Design'),
+('Financial Management'),
+('Human Capital'),
+('Information Technology'),
+('Innovation Management'),
+('New Business Development And Sales'),
+('Operations Management'),
+('Private Equity'),
+('Sales'),
+('Software Consulting'),
+('Strategy'),
+('Technology And Digital');
+
+DROP TABLE IF EXISTS `fx_project_sub_categories`;
+
+CREATE TABLE `fx_project_sub_categories` (
+	`id` int(10) NOT NULL AUTO_INCREMENT,
+	`parent_category` int(10) DEFAULT NULL,
+  	`name` varchar(50) DEFAULT NULL,
+	PRIMARY KEY (`id`)
+);
+
+insert into `fx_project_sub_categories` (`parent_category`,`name`)
+values (15, 'Business Unit Strategy');
 
 
 # Dump of table fx_tax_rates
