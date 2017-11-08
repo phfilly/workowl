@@ -9,7 +9,6 @@
     <div class="modal-body">
        <input type="hidden" name="user_id" value="<?=$id?>">
 
-
        <div class="form-group">
         <label class="col-lg-4 control-label"><?=lang('username')?></label>
         <div class="col-lg-8">

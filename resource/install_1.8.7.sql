@@ -1215,7 +1215,8 @@ VALUES
 	('settings_system','','settings_menu_admin','fa-desktop','system_settings','system',2,1,1,1,'',1,'0000-00-00 00:00:00'),
 	('settings_theme','','settings_menu_admin','fa-code','theme_settings','theme',9,1,1,1,'',1,'0000-00-00 00:00:00'),
 	('settings_translations','','settings_menu_admin','fa-globe','translations','translations',12,1,1,1,'',1,'0000-00-00 00:00:00'),
-	('user_menu_plugins','','user_menu_admin','','plugins','updates/plugins',1,1,1,1,'',1,'0000-00-00 00:00:00');
+	('user_menu_plugins','','user_menu_admin','','plugins','updates/plugins',1,1,1,1,'',1,'0000-00-00 00:00:00'),
+	('menu_industries', 'menu_projects', 'main_menu_admin', 'fa-angle-right', 'industries', 'projects/industries', '1', '1', '1', '1', '', '1', '0000-00-00 00:00:00');
 
 /*!40000 ALTER TABLE `fx_hooks` ENABLE KEYS */;
 UNLOCK TABLES;
