@@ -41,7 +41,10 @@ class Client extends CI_Model
 		return self::$db->affected_rows();
 	}
 
-
+	static function count_businesses()
+    {
+        return self::$db->count_all_results();
+    }
 
 	// Get all clients
 	static function get_all_clients()

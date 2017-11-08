@@ -197,6 +197,15 @@ class Project extends CI_Model
         return self::$db->where(array('id >'=>'0'))->get('project_settings')->result();
     }
 
+    static function count_projects()
+    {
+        return self::$db->where('assign_to !=', '')->get('projects')->num_rows();
+    }
+
+    static function active_projects()
+    {
+        return self::$db->where('status', 'Active')->get('projects')->num_rows();
+    }
     // Get all project files
     static function has_files($project)
     {

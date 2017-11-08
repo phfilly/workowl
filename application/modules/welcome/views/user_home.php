@@ -22,45 +22,52 @@
 			<div class="panel panel-default fadeInLeft animated">
 				<div class="row m-l-none m-r-none">
 					<div class="col-sm-6 col-md-3 padder-v b-r bg-dark b-light">
-						<a class="clear" href="<?= base_url() ?>reports">
-							<span class="fa-stack fa-2x pull-left m-r-sm"> <i class="fa fa-circle fa-stack-2x text-warning"></i> <i class="fa fa-paper-plane fa-stack-1x text-white"></i>
-							</span>
-							<small class="text-muted text-uc"><?= lang('outstanding') ?> </small>
-							<span class="h4 block m-t-xs">
-								<?php echo Applib::format_currency(config_item('default_currency'),Invoice::outstanding());?>
-
-							</span>  
+							<a class="clear" href="<?= base_url() ?>reports">
+								<span class="fa-stack fa-2x pull-left m-r-sm">
+									<i class="fa fa-circle fa-stack-2x text-warning"></i>
+									<i class="fa fa-users fa-stack-1x text-white"></i>
+								</span>
+								<small class="text-muted text-uc">Consultants Registered</small>
+								<span class="h4 block m-t-xs">
+									<?php echo User::count_users(); ?>
+								</span>  
 							</a>
 						</div>
 						<div class="col-sm-6 col-md-3 padder-v b-r bg-dark b-light">
-							<a class="clear" href="<?= base_url() ?>expenses">
-								<span class="fa-stack fa-2x pull-left m-r-sm"> <i class="fa fa-circle fa-stack-2x text-success"></i> <i class="fa fa-bank fa-stack-1x text-white"></i>
-								</span>
-								<small class="text-muted text-uc"><?=lang('expenses');?>  </small> 
-								<span class="h4 block m-t-xs">
-									<?php echo Applib::format_currency(config_item('default_currency'),Expense::total_expenses()); ?>
-
-								</span> 
+								<a class="clear" href="<?= base_url() ?>expenses">
+									<span class="fa-stack fa-2x pull-left m-r-sm">
+										<i class="fa fa-circle fa-stack-2x text-success"></i>
+										<i class="fa fa-bank fa-stack-1x text-white"></i>
+									</span>
+									<small class="text-muted text-uc">Businesses Registered</small> 
+									<span class="h4 block m-t-xs">
+										<?php echo Client::count_businesses(); ?>
+									</span> 
 								</a>
 							</div>
 							<div class="col-sm-6 col-md-3 padder-v b-r bg-dark b-light">
 								<a class="clear" href="<?= base_url() ?>reports">
-									<span class="fa-stack fa-2x pull-left m-r-sm"> <i class="fa fa-circle fa-stack-2x text-info"></i> <i class="fa fa-calendar fa-stack-1x text-white"></i>
+									<span class="fa-stack fa-2x pull-left m-r-sm">
+										<i class="fa fa-circle fa-stack-2x text-info"></i>
+										<i class="fa fa-inbox fa-stack-1x text-white"></i>
 									</span>
-									<small class="text-muted text-uc"><?= lang('last_month') ?>  </small> 
+									<small class="text-muted text-uc">Open Projects </small> 
 									<span class="h4 block m-t-xs">
-									<?php echo Applib::format_currency(config_item('default_currency'),Report::month_amount(date('Y'),date('m')-1)); ?>
+									<?php echo Project::count_projects(); ?>
 									</span>
 								</a>
 							</div>
 							<div class="col-sm-6 col-md-3 padder-v b-r bg-dark b-light">
-								<a class="clear" href="<?= base_url() ?>reports">
-									<span class="fa-stack fa-2x pull-left m-r-sm"> <i class="fa fa-circle fa-stack-2x text-info"></i> <i class="fa fa-calendar-check-o fa-stack-1x text-white"></i>
-									</span>
-									<small class="text-muted text-uc"><?=lang('this_month') ?></small>
-									<span class="h4 block m-t-xs">
-									<?php echo Applib::format_currency(config_item('default_currency'),Report::month_amount(date('Y'),date('m'))); ?>
-										</span>    </a>
+									<a class="clear" href="<?= base_url() ?>reports">
+										<span class="fa-stack fa-2x pull-left m-r-sm">
+											<i class="fa fa-circle fa-stack-2x text-info"></i>
+											<i class="fa fa-folder-open fa-stack-1x text-white"></i>
+										</span>
+										<small class="text-muted text-uc">Active Projects</small>
+										<span class="h4 block m-t-xs">
+										<?php echo Project::active_projects(); ?>
+										</span>
+									</a>
 								</div>
 							</div>
 						</div>

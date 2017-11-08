@@ -249,8 +249,6 @@ class Projects extends MX_Controller {
 
     function edit()
     {
-
-
         if ($this->input->post()) {
             $project_id = $this->input->post('project_id');
 
@@ -272,12 +270,10 @@ class Projects extends MX_Controller {
                     'form_error'=> validation_errors()
                 ));
                 redirect('projects/view/'.$project_id.'/?group=dashboard&action=edit');
-            }else{
-
+            } else {
                 $notify = TRUE; // Send email only when team changed
                 $current_team = Project::by_id($project_id)->assign_to;
                 if(serialize($this->input->post('assign_to')) == $current_team) $notify = FALSE;
-
 
                 $fixed_rate = ($this->input->post('fixed_rate') == 'on') ? 'Yes' : 'No';
                 unset($_POST['fixed_rate']);
