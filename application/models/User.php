@@ -45,6 +45,12 @@ class User extends CI_Model
         return self::$db->where('id',$id)->get('users')->row();
     }
 
+    // Get user total
+    static function count_users()
+    {
+        return self::$db->count_all_results();
+    }
+
     /**
      * Check user if admin
      */

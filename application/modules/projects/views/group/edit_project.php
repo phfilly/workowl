@@ -67,13 +67,45 @@
 									<input class="input-sm input-s datepicker-input form-control" size="16" type="text" value="<?php if(valid_date($project->due_date)){ echo strftime(config_item('date_format'), strtotime($project->due_date)); } ?>" name="due_date" data-date-format="<?=config_item('date_picker_format');?>" >
 								</div> 
 							</div> 
+							
 							<div class="form-group"> 
-								<label class="col-lg-3 control-label"><?=lang('progress')?></label>
-								<div class="col-lg-8 progress-box"> 
-									<div id="progress-slider"></div>
-									<input id="progress" type="hidden" value="<?=$project->progress?>" name="progress"/>
+								<label class="col-lg-3 control-label">Industry</label>
+								<div class="col-lg-8"> 
+									<select class="select2-option form-control" name="industry" > 
+								
+									<?php foreach (Project::get_all_industries() as $c => $key) { ?>
+										<option value="<?=$key->id?>"<?=($project->industry == $key->id ? ' selected="selected"' : '')?>><?=ucfirst($key->name)?></option>
+									<?php }?>
+
+									</select>
 								</div>
-							</div> 
+							</div>
+
+							<div class="form-group"> 
+								<label class="col-lg-3 control-label">Category</label>
+								<div class="col-lg-8"> 
+									<select class="select2-option form-control" name="project_category" > 
+								
+									<?php foreach (Project::project_categories() as $c => $key) { ?>
+										<option value="<?=$key->id?>"<?=($project->project_category == $key->id ? ' selected="selected"' : '')?>><?=ucfirst($key->name)?></option>>
+									<?php }?>
+
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group"> 
+								<label class="col-lg-3 control-label">Sub Category</label>
+								<div class="col-lg-8"> 
+									<select class="select2-option form-control" name="project_sub_category" > 
+								
+									<?php foreach (Project::project_sub_categories() as $c => $key) { ?>
+										<option value="<?=$key->id?>"<?=($project->project_sub_category == $key->id ? ' selected="selected"' : '')?>><?=ucfirst($key->name)?></option>>
+									<?php }?>
+
+									</select>
+								</div>
+							</div>
 
 							<div class="form-group">
 								<label class="col-lg-3 control-label"><?=lang('assigned_to')?> <span class="text-danger">*</span></label>
@@ -102,6 +134,15 @@
 								</div>
 							</div>
 
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Make Project Public</label>
+								<div class="col-lg-8">
+									<label class="switch">
+									<input type="checkbox" <?php if($project->public == 'on'){ echo "checked=\"checked\""; } ?> name="public">
+									<span></span>
+									</label>
+								</div>
+							</div>
 
 							<div id="hourly_rate" <?php if($project->fixed_rate == 'Yes'){ echo "style=\"display:none\""; }?>>
 								<div class="form-group">
