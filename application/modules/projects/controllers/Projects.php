@@ -53,6 +53,20 @@ class Projects extends MX_Controller {
             ->build('projects',isset($data) ? $data : NULL);
     }
 
+    function view_projects()
+    {
+        $archive = FALSE;
+        if (isset($_GET['view'])) { if ($_GET['view'] == 'archive') { $archive = TRUE; } }
+        $data = array(
+            'page' => lang('projects'),
+            'projects' => $this->_project_list($archive),
+            'datatables' => TRUE,
+            'archive' => $archive
+        );
+        $this->template
+            ->set_layout('users')
+            ->build('projects',isset($data) ? $data : NULL);
+    }
 
     function view($project = NULL)
     {
