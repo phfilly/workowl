@@ -44,7 +44,7 @@ class Industries extends MX_Controller
                 Applib::go_to('projects/industries/','error',lang('error_in_form'));	
             } else {	
                 if(Industry::save($this->input->post())){
-                    Applib::go_to('projects/industries/','success',lang('tax_added_successfully'));
+                    Applib::go_to('projects/industries/','success', 'Added successfully');
                 }
             }
 		} else {
