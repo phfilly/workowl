@@ -61,7 +61,7 @@ $captcha = array(
             ?>
                 </span>
 		 <section class="panel panel-default bg-white m-t-lg" style="border-radius:3px;">
-		<header class="panel-heading text-center"> <strong><?=config_item('login_title')?></strong>
+		<header class="panel-heading text-center"> <strong>WorkOwl Admin</strong>
 			<?php  echo modules::run('sidebar/flash_msg');?>
 		</header>
 		<?php
@@ -110,11 +110,6 @@ $captcha = array(
 			<button type="submit" class="btn btn-<?=config_item('theme_color');?>"><?=lang('sign_in')?></button>
 			<div class="line line-dashed">
 			</div>
-			<?php if (config_item('allow_client_registration') == 'TRUE'){ ?>
-			<p class="text-muted text-center"><small><?=lang('do_not_have_an_account')?></small></p>
-			<a href="<?=base_url()?>auth/register" class="btn btn-<?=config_item('theme_color')?> btn-block"><?=lang('get_your_account')?></a>
-			<?php } ?>
-
                         <?php echo form_close(); ?>
 
                         <!-- footer -->

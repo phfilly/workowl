@@ -1978,6 +1978,7 @@ CREATE TABLE `fx_projects` (
   `project_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'Project Title',
   `description` longtext COLLATE utf8_unicode_ci,
   `client` int(11) NOT NULL,
+  `budget` VARCHAR(255),
   `currency` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
   `start_date` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
   `due_date` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,

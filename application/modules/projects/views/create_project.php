@@ -62,7 +62,7 @@
 				<label class="col-lg-3 control-label"><?=lang('project_code')?> <span class="text-danger">*</span></label>
 				<div class="col-lg-3">
 				<?php $this->load->helper('string'); ?>
-					<input type="text" class="form-control" value="<?=config_item('project_prefix')?><?=random_string('nozero', 5);?>" name="project_code">
+					<input type="text" class="form-control" value="<?=config_item('project_prefix')?><?=random_string('nozero', 5);?>" name="project_code" readonly>
 				</div>
 				</div>
 				<div class="form-group">
@@ -182,7 +182,7 @@
           <label class="col-lg-3 control-label">Make Project Public</label>
           <div class="col-lg-8">
             <label class="switch">
-              <input type="checkbox" id="fixed_rate" name="public">
+              <input type="checkbox" name="public" checked>
               <span></span>
             </label>
           </div>
@@ -204,6 +204,13 @@
 							<input type="text" class="form-control" placeholder="300" name="fixed_price" value="<?=set_value('fixed_price')?>">
 						</div>
 					</div>
+				</div>
+
+				<div class="form-group">
+          <label class="col-lg-3 control-label">Estimated Budget</label>
+          <div class="col-lg-3">
+            <input type="text" class="form-control" placeholder="10000" name="budget" value="<?=set_value('budget')?>">
+          </div>
 				</div>
 
 				<div class="form-group">

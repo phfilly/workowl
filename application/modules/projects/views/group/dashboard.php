@@ -319,6 +319,12 @@
                         <?php if (User::is_admin() || User::is_client() || User::perm_allowed(User::get_id(), 'view_project_expenses')) {
                             ?>
 
+                <li class="list-group-item">
+                    <span class="text-muted">Project Budget</span>
+                    <span class="pull-right">
+                        <strong>R <?=$info->budget?></strong>
+                    </span>
+                </li>
                             <li class="list-group-item">
                 <span class="pull-right">
 
@@ -334,7 +340,7 @@
                             <i class="fa fa-plus"></i></a>
                     <?php
                             } ?>
-
+                            
                     <a href="<?= site_url() ?>expenses/?project=<?= $project_id ?>" data-toggle="tooltip"
                        title="<?= lang('view_expenses') ?>" data-placement="left"
                        class="btn btn-xs btn-<?= config_item('theme_color') ?>"><i class="fa fa-ellipsis-h"></i></a>

@@ -161,7 +161,6 @@ class Projects extends MX_Controller {
                 if (isset($_POST['files'])) { unset($_POST['files']); }
 
                 $project_id = Project::save($this->input->post());
-
                 // Inherit currency and language settings
 
                 if ($_POST['client'] > 0) {

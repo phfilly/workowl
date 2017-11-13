@@ -162,6 +162,13 @@
 							</div>
 
 							<div class="form-group">
+								<label class="col-lg-3 control-label">Estimated Budget</label>
+								<div class="col-lg-3">
+									<input type="text" class="form-control" name="budget" value="<?=$project->budget?>">
+								</div>
+							</div>
+
+							<div class="form-group">
 								<label class="col-lg-3 control-label"><?=lang('estimated_hours')?></label>
 								<div class="col-lg-3">
 									<input type="text" class="form-control" value="<?=$project->estimate_hours?>" name="estimate_hours">
