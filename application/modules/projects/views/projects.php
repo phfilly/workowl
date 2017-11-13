@@ -89,7 +89,7 @@
         <?php if(User::login_role_name() != 'staff' || User::perm_allowed(User::get_id(),'view_project_cost')){ ?>
                     <th class="col-currency"><?=lang('amount')?></th>
                     <?php } ?>
-                    
+                    <th>Created By</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -251,7 +251,14 @@
                         </small>
                         </td>
                       <?php } ?>
-                      
+                        <td>
+                          <?php 
+                            $user = User::profile_info($p->created_by);
+
+                            echo $user->fullname ? $user->fullname : "Admin";
+                          
+                          ?>
+                        </td>
                     </tr>
 
 

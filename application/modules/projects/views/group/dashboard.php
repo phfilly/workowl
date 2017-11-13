@@ -215,7 +215,7 @@
                   <?php echo Client::view_by_id($info->client)->company_name; ?>
               </a>
                </span>
-                                    <span class="text-muted"><?= lang('client_name') ?></span>
+                                    <span class="text-muted">Company</span>
 
                                 </li>
                             <?php
@@ -323,6 +323,17 @@
                     <span class="text-muted">Project Budget</span>
                     <span class="pull-right">
                         <strong>R <?=$info->budget?></strong>
+                    </span>
+                </li>
+
+                <?php 
+                    $user = User::profile_info($info->created_by);
+                     
+                ?>
+                <li class="list-group-item">
+                    <span class="text-muted">Created By</span>
+                    <span class="pull-right">
+                        <strong><?=$user->fullname?></strong>
                     </span>
                 </li>
                             <li class="list-group-item">

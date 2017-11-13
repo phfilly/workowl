@@ -182,6 +182,17 @@
 								</div>
 							</div>
 
+							<?php 
+								$user = User::profile_info($project->created_by);
+							?>
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Created By</label>
+								<div class="col-lg-3">
+									<input type="text" class="form-control" readonly value="<?=$user->fullname?>">
+									<input type="hidden" class="form-control" name="created_by" value="<?=$project->created_by?>">
+								</div>
+							</div>
+
 							<button type="submit" class="btn btn-sm btn-<?=config_item('theme_color')?>"><i class="fa fa-check"></i> <?=lang('save_changes')?></button>
 
 

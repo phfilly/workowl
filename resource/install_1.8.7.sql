@@ -2006,6 +2006,7 @@ CREATE TABLE `fx_projects` (
   `project_category` int(11) NOT NULL,
   `project_sub_category` int(11) NOT NULL,
   `public` varchar(10),
+  `created_by` varchar(150),
   PRIMARY KEY (`project_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

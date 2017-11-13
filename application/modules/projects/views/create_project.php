@@ -62,7 +62,7 @@
 				<label class="col-lg-3 control-label"><?=lang('project_code')?> <span class="text-danger">*</span></label>
 				<div class="col-lg-3">
 				<?php $this->load->helper('string'); ?>
-					<input type="text" class="form-control" value="<?=config_item('project_prefix')?><?=random_string('nozero', 5);?>" name="project_code">
+					<input type="text" class="form-control" value="<?=config_item('project_prefix')?><?=random_string('nozero', 5);?>" name="project_code" readonly>
 				</div>
 				</div>
 				<div class="form-group">
@@ -74,7 +74,7 @@
 
 				<?php if (User::is_admin() || User::perm_allowed(User::get_id(),'add_projects')) { ?>
 				<div class="form-group">
-			        <label class="col-lg-3 control-label"><?=lang('client')?> <span class="text-danger">*</span> </label>
+			        <label class="col-lg-3 control-label">Company <span class="text-danger">*</span> </label>
 			        <div class="col-lg-6">
 			          <select class="select2-option form-control" name="client"  required> 
 			          
@@ -182,7 +182,7 @@
           <label class="col-lg-3 control-label">Make Project Public</label>
           <div class="col-lg-8">
             <label class="switch">
-              <input type="checkbox" id="fixed_rate" name="public">
+              <input type="checkbox" id="fixed_rate" name="public" checked>
               <span></span>
             </label>
           </div>
@@ -207,6 +207,13 @@
 				</div>
 
 				<div class="form-group">
+          <label class="col-lg-3 control-label">Estimated Budget</label>
+          <div class="col-lg-3">
+            <input type="text" class="form-control" placeholder="10000" name="budget" value="<?=set_value('budget')?>">
+          </div>
+				</div>
+
+				<div class="form-group">
           <label class="col-lg-3 control-label"><?=lang('estimated_hours')?></label>
           <div class="col-lg-3">
             <input type="text" class="form-control" placeholder="300" name="estimate_hours" value="<?=set_value('estimate_hours')?>">
@@ -214,12 +221,23 @@
 				</div>
 
 				<div class="form-group">
-				<label class="col-lg-3 control-label"><?=lang('description')?> <span class="text-danger">*</span></label>
-				<div class="col-lg-9">
-				<textarea name="description" class="form-control foeditor-100" placeholder="<?=lang('description')?>" required value="<?=set_value('description')?>"></textarea>
-				</div>
+					<label class="col-lg-3 control-label"><?=lang('description')?> <span class="text-danger">*</span></label>
+					<div class="col-lg-9">
+					<textarea name="description" class="form-control foeditor-100" placeholder="<?=lang('description')?>" required value="<?=set_value('description')?>"></textarea>
+					</div>
 				</div>
 				
+				<?php 
+					$userId = User::get_id();
+					$user = User::profile_info($userId);
+				?>
+				<div class="form-group">
+          <label class="col-lg-3 control-label">Created By</label>
+          <div class="col-lg-3">
+						<input type="text" class="form-control" readonly value="<?=$user->fullname?>">
+            <input type="hidden" class="form-control" name="created_by" value="<?=$userId?>">
+          </div>
+        </div>
 				<button type="submit" class="btn btn-sm btn-<?=config_item('theme_color')?>"><i class="fa fa-plus"></i> <?=lang('create_project')?></button>
 
 
