@@ -322,7 +322,7 @@
                 <li class="list-group-item">
                     <span class="text-muted">Project Budget</span>
                     <span class="pull-right">
-                        <strong>R <?=$info->budget?></strong>
+                        <strong><?=$info->budget ? 'R'.$info->budget: 'N/A' ?></strong>
                     </span>
                 </li>
 
