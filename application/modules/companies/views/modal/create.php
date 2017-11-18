@@ -1,7 +1,7 @@
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><?=lang('new_client')?></h4>
+        <h4 class="modal-title">New Company</h4>
         </div><?php
             echo form_open(base_url().'companies/create'); ?>
         <div class="modal-body">
@@ -10,7 +10,6 @@
                         <li><a data-toggle="tab" href="#tab-client-contact"><?=lang('contact')?></a></li>
                         <li><a data-toggle="tab" href="#tab-client-web"><?=lang('web')?></a></li>
                         <li><a data-toggle="tab" href="#tab-client-bank"><?=lang('bank')?></a></li>
-                        <li><a data-toggle="tab" href="#tab-client-hosting"><?=lang('hosting')?></a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="tab-client-general">
@@ -27,27 +26,6 @@
                                     <label><?=lang('email')?> <span class="text-danger">*</span></label>
                                     <input type="email" name="company_email" value="" class="input-sm form-control" required>
                             </div>
-                            <div class="form-group">
-                                    <label><?=lang('vat')?> </label>
-                                    <input type="text" value="" name="VAT" class="input-sm form-control">
-                            </div>
-                            <div class="form-group">
-                                <label><?=lang('language')?></label>
-                                <select name="language" class="form-control">
-                                <?php foreach (App::languages() as $lang) : ?>
-                                <option value="<?=$lang->name?>"<?=(config_item('default_language') == $lang->name ? ' selected="selected"' : '')?>><?=  ucfirst($lang->name)?></option>
-                                <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label><?=lang('currency')?></label>
-                                <select name="currency" class="form-control">
-                                <?php foreach (App::currencies() as $cur) : ?>
-                                <option value="<?=$cur->code?>"<?=(config_item('default_currency') == $cur->code ? ' selected="selected"' : '')?>><?=$cur->name?></option>
-                                <?php endforeach; ?>
-                                </select>
-                            </div>
-
                             <div class="form-group">
                                 <label><?=lang('notes')?></label>
                                 <textarea name="notes" class="form-control" placeholder="<?=lang('notes')?>" ></textarea>

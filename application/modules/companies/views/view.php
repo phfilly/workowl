@@ -219,9 +219,9 @@ $i = Client::view_by_id($company);
                                 <div class="col-md-12">
                                     <section class="panel panel-default b-top">
                                         <header class="panel-heading">
-                                            <a href="<?=base_url()?>contacts/add/<?=$i->co_id?>" class="btn btn-xs btn-<?=config_item('theme_color');?> pull-right" data-toggle="ajaxModal"><i class="fa fa-plus"></i> <?=lang('add_contact')?></a>
+                                            <a href="<?=base_url()?>contacts/add/<?=$i->co_id?>" class="btn btn-xs btn-<?=config_item('theme_color');?> pull-right" data-toggle="ajaxModal"><i class="fa fa-plus"></i> Add User</a>
 
-                                            <i class="fa fa-user"></i> <?=lang('contacts')?></header>
+                                            <i class="fa fa-user"></i> Users</header>
 
 
 

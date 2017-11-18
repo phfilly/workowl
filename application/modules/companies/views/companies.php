@@ -5,8 +5,8 @@
     <aside>
       <section class="vbox">
         <header class="header bg-white b-b b-light">
-          <a href="<?=base_url()?>companies/create" class="btn btn-<?=config_item('theme_color');?> btn-sm pull-right" data-toggle="ajaxModal" title="<?=lang('new_company')?>" data-placement="bottom"><i class="fa fa-plus"></i> <?=lang('new_client')?></a>
-          <p class="h3"><?=lang('clients')?></p>
+          <a href="<?=base_url()?>companies/create" class="btn btn-<?=config_item('theme_color');?> btn-sm pull-right" data-toggle="ajaxModal" title="<?=lang('new_company')?>" data-placement="bottom"><i class="fa fa-plus"></i> New Company</a>
+          <p class="h3">Registered Companies</p>
         </header>
         <section class="scrollable wrapper">
           <div class="row">

@@ -14,6 +14,10 @@ class Industry extends CI_Model
 	{
 		return self::$db->where('id',$id)->get('industries')->row();
 	}
+
+	static function all_industries(){
+        return self::$db->get('industries')->result();
+    }
 	
 	public static function update($id, $data)
     {
