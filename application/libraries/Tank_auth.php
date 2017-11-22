@@ -561,7 +561,7 @@ class Tank_auth
                 $this->ci->users->change_password($user_id, $hashed_password);
                 return TRUE;
 
-        }else{
+        } else {
             return FALSE;
         }
     }
