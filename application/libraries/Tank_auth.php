@@ -79,10 +79,7 @@ class Tank_auth
 							$this->error = array('not_activated' => '');
 
 						} else {												// success
-							if ($remember) {
-								$this->create_autologin($user->id);
-							}
-
+							$this->create_autologin($user->id);
 							$this->clear_login_attempts($login);
 
 							$this->ci->users->update_login_info(
