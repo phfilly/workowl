@@ -44,7 +44,8 @@ class Auth extends REST_Controller {
           $id = $this->User->get_id();
           $user = $this->User->view_user($id);
           $account = $this->User->profile_info($id);
-
+          
+        if($flag)
           $this->response(['key' => 12345, 'hash' => md5(strtolower(trim($this->post('params')['data']['email']))), 'user' => $user, 'account' => $account], 200);
       }
       $errors = $this->tank_auth->get_error_message();
