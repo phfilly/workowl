@@ -10,7 +10,7 @@ class Auth extends REST_Controller {
         parent::__construct();
         $this->methods['index_get']['limit'] = 500; // 500 requests per hour per user/key
         $this->methods['test_get']['limit'] = 500; // 500 requests per hour per user/key
-        $this->load->model('Users');
+        $this->load->model(array('Users', 'User'));
     }
 
     function headers()
@@ -41,14 +41,15 @@ class Auth extends REST_Controller {
           $login_by_email = $this->post('params')['data']['email'];
           $password = $this->post('params')['data']['password'];
           $flag = $this->tank_auth->login($this->post('params')['data']['email'], $password, true, '', $login_by_email);
+          $id = $this->User->get_id();
+          $user = $this->User->view_user($id);
+          $account = $this->User->profile_info($id);
+
+          $this->response(['key' => 12345, 'hash' => md5(strtolower(trim($this->post('params')['data']['email']))), 'user' => $user, 'account' => $account], 200);
       }
       $errors = $this->tank_auth->get_error_message();
       // $token = Configuration::gateway()->clientToken()->generateWithoutCustomerIdSignature();
-      
-      if ($flag)
-        $this->response(['key' => 12345, 'hash' => md5(strtolower(trim($this->post('params')['data']['email'])))], 200);
-      else
-        $this->response($errors, 404);
+    $this->response($errors, 404);
     }
 
     function signup_options()
