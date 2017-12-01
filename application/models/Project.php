@@ -45,6 +45,25 @@ class Project extends CI_Model
         return self::$db->where('project_id',$id)->get('projects')->row();
     }
 
+    static function all_full()
+    {
+        self::$db->join('industries', 'projects.industry = industries.id')
+        ->join('project_categories', 'projects.project_category = project_categories.id')
+        ->join('companies', 'projects.client = companies.co_id');
+        return self::$db->select('companies.company_name as client, projects.description, projects.project_id, projects.date_created, projects.project_title, projects.project_code, industries.name as industry, project_categories.name as project_category')->order_by('date_created','desc')->get('projects')->result();
+    }
+
+    static function by_where_filter($column, $name)
+    {
+        self::$db->join('industries', 'projects.industry = industries.id')
+        ->join('project_categories', 'projects.project_category = project_categories.id')
+        ->join('companies', 'projects.client = companies.co_id');
+        return self::$db->select('companies.company_name as client, projects.project_id, projects.date_created, projects.project_title, projects.project_code, industries.name as industry, project_categories.name as project_category')
+                ->where($column, $name)
+                ->order_by('date_created','desc')
+                ->get('projects')
+                ->result();
+    }
 
     // Save Project
     static function save($data){

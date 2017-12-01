@@ -28,8 +28,25 @@ class Projects extends REST_Controller {
     //API -  Fetch All Projects
     function index_get()
     {
-        $result = $this->Project->all();
+        $result = $this->Project->all_full();
         if($result) {
+            $data = $this->get('params');
+
+            if ($this->get('search') != '') {
+                $result = $this->Project->by_where('description like "%'.$this->get('search').'%" ');
+            } else if (count($data) > 0) {
+                foreach($data as $item) {
+                    $tmp = json_decode($item, true);
+                    if($tmp['type'] == 'Industry') {
+                        $result = $this->Project->by_where_filter('industries.name', $tmp['name']);    
+                    }
+
+                    if($tmp['type'] == 'Category') {
+                        $result = $this->Project->by_where_filter('project_categories.name', $tmp['name']);    
+                    }
+                }
+            }
+
             $this->response($result, 200); 
         } 
         else {
