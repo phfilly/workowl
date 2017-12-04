@@ -33,7 +33,7 @@ class Projects extends REST_Controller {
             $data = $this->get('params');
 
             if ($this->get('search') != '') {
-                $result = $this->Project->by_where('description like "%'.$this->get('search').'%" ');
+                $result = $this->Project->by_where('projects.description like "%'.$this->get('search').'%" OR projects.project_title like "%'.$this->get('search').'%"');
             } else if (count($data) > 0) {
                 foreach($data as $item) {
                     $tmp = json_decode($item, true);
