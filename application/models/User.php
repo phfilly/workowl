@@ -98,6 +98,11 @@ class User extends CI_Model
         return self::$db->get('users')->result();
     }
 
+    static function all_consultants(){
+        self::$db->join('account_details', 'account_details.user_id = users.id');
+        return self::$db->get('users')->result();
+    }
+
     static function user_status(){
         return self::$db->get('user_status')->result();
     }
@@ -179,7 +184,8 @@ class User extends CI_Model
      */
 
     static function profile_info($id) {
-        return self::$db->where('user_id',$id) -> get('account_details')->row();
+        self::$db->join('users', 'users.id = account_details.user_id');
+        return self::$db->where('user_id',$id)->get('account_details')->row();
     }
 
 

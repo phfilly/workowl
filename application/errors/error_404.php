@@ -61,7 +61,7 @@
   <footer id="footer">
     <div class="text-center padder clearfix">
       <p>
-        <small>Powered by <a href="http://codecanyon.net/item/freelancer-office/8870728">Freelancer Office</a> v<?=config_item('version')?> &copy; <?=date('Y')?></small>
+        <small>v<?=config_item('version')?> &copy; <?=date('Y')?></small>
       </p>
     </div>
   </footer>

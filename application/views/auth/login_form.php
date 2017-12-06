@@ -40,34 +40,17 @@ $captcha = array(
 
 <section id="content" class="m-t-lg wrapper-md" style="margin-top:5px;">
 
-                <div id="login-darken"></div>
+		<!--<div id="login-darken"></div>-->
 		<div id="login-form" class="container aside-xxl animated fadeInUp">
 
-
-		<span class="navbar-brand block <?=(config_item('blur_login') == 'TRUE') ? 'text-white':'';?>">
-                    <?php $display = config_item('logo_or_icon'); ?>
-			<?php if ($display == 'logo' || $display == 'logo_title') { ?>
-			<img src="<?=base_url()?>resource/images/<?=config_item('company_logo')?>" class="img-responsive <?=($display == 'logo' ? "" : "thumb-sm m-r-sm")?>">
-			<?php } elseif ($display == 'icon' || $display == 'icon_title') { ?>
-			<i class="fa <?=config_item('site_icon')?>"></i>
-			<?php } ?>
-			<?php
-                if ($display == 'logo_title' || $display == 'icon_title') {
-                    if (config_item('website_name') == '') {
-                    	echo config_item('company_name');
-                    } else {
-                    	echo config_item('website_name'); }
-                        }
-            ?>
-                </span>
 		 <section class="panel panel-default bg-white m-t-lg" style="border-radius:3px;">
-		<header class="panel-heading text-center"> <strong>WorkOwl Admin</strong>
-			<?php  echo modules::run('sidebar/flash_msg');?>
-		</header>
 		<?php
 		$attributes = array('class' => 'panel-body wrapper-lg');
 		echo form_open($this->uri->uri_string(),$attributes); ?>
-
+			<img src="<?=base_url()?>resource/images/<?=config_item('company_logo')?>" class="img-responsive" style='margin:auto; max-width: 120px;'>
+			<h3 style='text-align: center;'>WorkOwl</h3>
+			<?php echo modules::run('sidebar/flash_msg');?>
+			<hr>
 			<div class="form-group">
 				<label class="control-label"><?=lang('email_user')?></label>
 				<?php echo form_input($login); ?>
@@ -116,7 +99,7 @@ $captcha = array(
         <?php if (config_item('hide_branding') == 'FALSE') : ?>
 	<footer id="footer" style="background-color: #f6f5f5; padding: 10px 0; border-radius: 0 0 4px 4px; margin-bottom:0;">
 	<div class="text-center text-muted padder">
-		<p> <small><?=lang('powered_by')?>  <a href="http://codecanyon.net/item/freelancer-office/8870728" target="_blank">Freelancer Office</a> v<?=config_item('version')?>
+		<p><small>v<?=config_item('version')?>
 		<br>&copy; <?=date('Y')?> <a href="<?=config_item('company_domain')?>" target="_blank"><?=config_item('company_name')?></a> </small> </p>
 	</div>
 	</footer>

@@ -33,7 +33,7 @@ class Projects extends REST_Controller {
             $data = $this->get('params');
 
             if ($this->get('search') != '') {
-                $result = $this->Project->by_where('projects.description like "%'.$this->get('search').'%" OR projects.project_title like "%'.$this->get('search').'%"');
+                $result = $this->Project->by_where_full('projects.description like "%'.$this->get('search').'%" OR projects.project_title like "%'.$this->get('search').'%"');
             } else if (count($data) > 0) {
                 foreach($data as $item) {
                     $tmp = json_decode($item, true);
@@ -70,7 +70,7 @@ class Projects extends REST_Controller {
         header('Access-Control-Allow-Headers: Content-Type, Accept, Authorization, X-Requested-With');
 
         $id = (int) $this->get('id');
-        $result = $this->Project->by_id($id);
+        $result = $this->Project->by_id_full($id);
         if($result) {
             $this->response($result, 200); 
         } 
@@ -79,11 +79,6 @@ class Projects extends REST_Controller {
         }
     }
 
-    function test_get()
-    {
-        $this->response("Hello", 404);
-        
-    }
 }
 
 ?>

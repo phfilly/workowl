@@ -40,7 +40,7 @@
   <footer id="footer">
     <div class="text-center padder clearfix">
       <p>
-        <small><?=lang('powered_by')?> <a class="text-info" href="http://codecanyon.net/item/freelancer-office/8870728">Freelancer Office v.<?=config_item('version')?></a></small>
+        <small>v.<?=config_item('version')?></a></small>
       </p>
     </div>
   </footer>

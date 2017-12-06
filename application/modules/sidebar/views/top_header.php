@@ -7,12 +7,6 @@
 			<a href="<?=base_url()?>" class="navbar-brand">
 				<?php $display = config_item('logo_or_icon'); ?>
 
-				<?php if ($display == 'logo' || $display == 'logo_title') { ?>
-					<img src="<?=base_url()?>resource/images/<?=config_item('company_logo')?>" class="m-r-sm">
-				<?php } elseif ($display == 'icon' || $display == 'icon_title') { ?>
-					<i class="fa <?=config_item('site_icon')?>"></i>
-				<?php } ?>
-
 				<?php 
 				if ($display == 'logo_title' || $display == 'icon_title') {
 					if (config_item('website_name') == '') { echo config_item('company_name'); } else { echo config_item('website_name'); }
@@ -39,7 +33,7 @@
 			<?php endif; endforeach; ?>
 			<?php $up = count($updates); ?>
 			<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="<?=($up > 0 && $role == 'admin' ? 'color: #FF4000;':'')?>">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="<?=($up > 0 && $role == 'admin' ? 'color: #eee;':'')?>">
 					<span class="thumb-sm avatar pull-left">
 						<?php
 						$user = User::get_id();
@@ -47,7 +41,12 @@
 						?>
 						<img src="<?php echo User::avatar_url($user);?>" class="img-circle">
 					</span>
-					<?php echo User::displayName($user);?> <b class="caret"></b>
+					<?php 
+						echo User::displayName($user);
+						if ($role == 'admin') {
+							echo ' <small>[admin]</small>';
+						}
+					?> <b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu animated fadeInRight">
 					<li class="arrow top"></li>

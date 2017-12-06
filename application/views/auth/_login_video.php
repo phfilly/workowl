@@ -154,8 +154,8 @@ $captcha = array(
         <?php if (config_item('hide_branding') == 'FALSE') : ?>
 	<footer id="footer">
 	<div class="text-center text-<?=(config_item('blur_login') == 'TRUE') ? 'white':config_item('theme_color')?> padder">
-		<p> <small><?=lang('powered_by')?>  <a href="http://codecanyon.net/item/freelancer-office/8870728">Freelancer Office</a> v<?=config_item('version')?> 
-		<br>&copy; <?=date('Y')?> <a href="<?=config_item('company_domain')?>" target="_blank"><?=config_item('company_name')?></a> </small> </p>
+	<p><small>v<?=config_item('version')?>
+	<br>&copy; <?=date('Y')?> <a href="<?=config_item('company_domain')?>" target="_blank"><?=config_item('company_name')?></a> </small> </p>
 	</div> 
 	</footer>
         <?php endif; ?>

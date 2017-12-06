@@ -45,6 +45,18 @@ class Project extends CI_Model
         return self::$db->where('project_id',$id)->get('projects')->row();
     }
 
+    static function by_id_full($id)
+    {
+        self::$db->join('industries', 'projects.industry = industries.id')
+        ->join('project_categories', 'projects.project_category = project_categories.id')
+        ->join('companies', 'projects.client = companies.co_id');
+
+        return self::$db->select('companies.company_name as company, projects.*, industries.name as industry, project_categories.name as project_category')
+            ->where('projects.project_id', $id)
+            ->get('projects')
+            ->row();
+    }
+
     static function all_full()
     {
         self::$db->join('industries', 'projects.industry = industries.id')
@@ -77,7 +89,7 @@ class Project extends CI_Model
 
 
     // Get projects WHERE array
-    static function by_where($array = NULL){
+    static function by_where_full($array = NULL){
         self::$db->join('industries', 'projects.industry = industries.id')
         ->join('project_categories', 'projects.project_category = project_categories.id')
         ->join('companies', 'projects.client = companies.co_id');
@@ -86,6 +98,11 @@ class Project extends CI_Model
             ->where($array)
             ->get('projects')
             ->result();
+    }
+
+    static function by_where($array = NULL) {
+        if($join != NULL) self::$db->join($join,'assign_projects.project_assigned = projects.project_id');
+        return self::$db->where($array)->get('projects')->result();
     }
 
     static function by_where_filter($column, $name)
