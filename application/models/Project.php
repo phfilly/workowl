@@ -51,10 +51,18 @@ class Project extends CI_Model
         ->join('project_categories', 'projects.project_category = project_categories.id')
         ->join('companies', 'projects.client = companies.co_id');
 
-        return self::$db->select('companies.company_name as company, projects.*, industries.name as industry, project_categories.name as project_category')
+        $project = self::$db->select('companies.company_name as company, projects.*, industries.name as industry, project_categories.name as project_category')
             ->where('projects.project_id', $id)
             ->get('projects')
             ->row();
+        
+        $project->count_by_client = self::project_count_by_client($project->client);
+        return $project;
+    }
+
+    static function project_count_by_client($clientId)
+    {
+        return self::$db->where('client', $clientId)->get('projects')->num_rows();
     }
 
     static function all_full()
