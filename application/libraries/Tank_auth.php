@@ -262,7 +262,7 @@ class Tank_auth
 	 * @return	array
 	 */
 
-	function admin_create_user($username, $email, $password, $fullname, $company, $role, $phone, $email_activation)
+	function admin_create_user($username, $email, $password, $fullname, $company, $role, $phone, $email_activation, $verified, $type)
 	{
 		if ((strlen($username) > 0) AND !$this->ci->users->is_username_available($username)) {
 			$this->error = array('username' => 'auth_username_in_use');
@@ -282,6 +282,8 @@ class Tank_auth
 				'password'	=> $hashed_password,
 				'email'		=> $email,
 				'role_id'	=> $role,
+				'verified'  => $verified,
+				'type'		=> $type,
 				'last_ip'	=> $this->ci->input->ip_address()
 			);
 

@@ -279,7 +279,9 @@ class Auth extends MX_Controller
                 $this->input->post('company'),
                 $this->input->post('role'),
                 $this->input->post('phone'),
-                $email_activation
+                $email_activation,
+                $this->input->post('user_status'),
+                $this->input->post('user_type')
             ))) {									// success
 
                 $data['site_name'] = config_item('company_name');

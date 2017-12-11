@@ -38,9 +38,6 @@
 
 	<span class="label label-<?=($user->banned == '1') ? 'danger': 'success'?>"><?=$user->username?></span>
 
-	<?php if($user->role_id == '3') { ?>
-	 <strong class=""><?=config_item('default_currency_symbol')?><?=User::profile_info($user->id)->hourly_rate;?>/<?=lang('hour')?></strong>
-	 <?php }?>
 				</a>
 				</td>
 
@@ -150,14 +147,29 @@
 						<div class="form-group">
 							<label><?=lang('company')?></label>
 							<select class="select2-option" style="width:200px" name="company" >
-								<optgroup label="<?=lang('default_company')?>">
-									<option value="-"><?=config_item('company_name')?></option>
-								</optgroup>
-								<optgroup label="<?=lang('other_companies')?>">
-									<?php foreach (Client::get_all_clients() as $company){ ?>
-									<option value="<?=$company->co_id?>"><?=$company->company_name?></option>
-									<?php } ?>
-								</optgroup>
+								<?php foreach (Client::get_all_clients() as $company){ ?>
+								<option value="<?=$company->co_id?>"><?=$company->company_name?></option>
+								<?php } ?>
+							</select>
+						</div>
+						<div class="form-group">
+							<label>Client Type</label>
+								<select name="user_type" class="form-control">
+								<?php
+									foreach (User::user_types() as $key) { ?>
+										<option value="<?=$key->type?>"<?=($user->type == $key->type ? ' selected="selected"' : '')?>><?=ucfirst($key->type)?></option>
+									<?php }
+								?>          
+								</select>
+						</div>
+						<div class="form-group">
+							<label>Verified</label>
+							<select name="user_status" class="form-control">
+							<?php
+								foreach (User::user_status() as $key) { ?>
+									<option value="<?=$key->status?>"<?=($user->verified == $key->status ? ' selected="selected"' : '')?>><?=ucfirst($key->status)?></option>
+								<?php }
+							?>          
 							</select>
 						</div>
 						<div class="form-group">

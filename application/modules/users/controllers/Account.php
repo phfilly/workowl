@@ -29,15 +29,15 @@ class Account extends MX_Controller {
 
 	function active()
 	{
-	$this->load->module('layouts');
-	$this->load->library('template');
-	$this->template->title(lang('users').' - '.config_item('company_name'));
-	$data['page'] = lang('users');
-	$data['datatables'] = TRUE;
-	$data['form'] = TRUE;
-	$this->template
-	->set_layout('users')
-	->build('users',isset($data) ? $data : NULL);
+		$this->load->module('layouts');
+		$this->load->library('template');
+		$this->template->title(lang('users').' - '.config_item('company_name'));
+		$data['page'] = lang('users');
+		$data['datatables'] = TRUE;
+		$data['form'] = TRUE;
+		$this->template
+		->set_layout('users')
+		->build('users',isset($data) ? $data : NULL);
 	}
 
 	function permissions()
@@ -121,9 +121,9 @@ class Account extends MX_Controller {
 			$this->session->set_flashdata('message', lang('user_edited_successfully'));
 			redirect('users/account');
 		}
-		}else{
-		$data['id'] = $this->uri->segment(4);
-		$this->load->view('modal/edit_user',$data);
+		} else {
+			$data['id'] = $this->uri->segment(4);
+			$this->load->view('modal/edit_user',$data);
 		}
 	}
 
