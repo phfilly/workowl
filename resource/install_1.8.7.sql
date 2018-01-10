@@ -313,6 +313,17 @@ CREATE TABLE `fx_comments` (
   PRIMARY KEY (`comment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+DROP TABLE IF EXISTS `fx_project_apply`
+
+CREATE TABLE `fx_project_apply` (
+  `id` INT NOT NULL,
+  `project_id` VARCHAR(45) NULL,
+  `user_id` VARCHAR(45) NULL,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`));
+
+ALTER TABLE `workowl_gitbench`.`fx_project_apply` 
+CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT ,
 
 
 # Dump of table fx_companies

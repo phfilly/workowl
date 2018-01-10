@@ -79,6 +79,28 @@ class Projects extends REST_Controller {
         }
     }
 
+    function apply_options()
+    {
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Credentials: true');
+        header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
+        header('Access-Control-Allow-Headers: Content-Type, Accept, Authorization, X-Requested-With');
+    }
+
+    function apply_post()
+    {
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Credentials: true');
+        header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
+        header('Access-Control-Allow-Headers: Content-Type, Accept, Authorization, X-Requested-With');
+        
+        if($this->Project->apply_to_project($this->post('params')['project_id'], $this->post('params')['user_id'])) {
+            $this->response("Applied", 200); 
+        } else {
+            $this->response("Failed", 404);
+        }
+    }
+
 }
 
 ?>

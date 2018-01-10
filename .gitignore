@@ -1,2 +1,6 @@
 application/logs
 .htaccess
+application/node_modules/
+
+*.pdf
+*.png

@@ -46,7 +46,7 @@ class Auth extends REST_Controller {
           $account = $this->User->profile_info($id);
           
         if($flag)
-          $this->response(['key' => 12345, 'hash' => md5(strtolower(trim($this->post('params')['data']['email']))), 'user' => $user, 'account' => $account], 200);
+          $this->response(['key' => $this->tank_auth->create_remote_login($id), 'hash' => md5(strtolower(trim($this->post('params')['data']['email']))), 'user' => $user, 'account' => $account], 200);
       }
       $errors = $this->tank_auth->get_error_message();
       // $token = Configuration::gateway()->clientToken()->generateWithoutCustomerIdSignature();

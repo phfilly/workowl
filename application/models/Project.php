@@ -60,6 +60,11 @@ class Project extends CI_Model
         return $project;
     }
 
+    static function apply_to_project($project_id, $user_id)
+    {
+        return self::$db->insert('project_apply', array('project_id' => $project_id, 'user_id' => $user_id));
+    }
+
     static function project_count_by_client($clientId)
     {
         return self::$db->where('client', $clientId)->get('projects')->num_rows();
