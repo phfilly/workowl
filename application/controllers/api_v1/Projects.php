@@ -95,7 +95,31 @@ class Projects extends REST_Controller {
         header('Access-Control-Allow-Headers: Content-Type, Accept, Authorization, X-Requested-With');
         
         if($this->Project->apply_to_project($this->post('params')['project_id'], $this->post('params')['user_id'])) {
-            $this->response("Applied", 200); 
+            $result = $this->Project->by_id_full($this->post('params')['project_id']);
+            //TODO add status column to project_apply
+            $this->response($result, 200); 
+        } else {
+            $this->response("Failed", 404);
+        }
+    }
+
+    function retrieve_applied_projects_options()
+    {
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Credentials: true');
+        header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
+        header('Access-Control-Allow-Headers: Content-Type, Accept, Authorization, X-Requested-With');
+    }
+
+    function retrieve_applied_projects_get()
+    {
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Credentials: true');
+        header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
+        header('Access-Control-Allow-Headers: Content-Type, Accept, Authorization, X-Requested-With');
+
+        if($this->get('user_id') != null) {
+            $this->response($this->index_get(), 200); 
         } else {
             $this->response("Failed", 404);
         }
