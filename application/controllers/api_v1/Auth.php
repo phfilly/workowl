@@ -66,8 +66,12 @@ class Auth extends REST_Controller {
 
         if ($this->post('params')['data']['name'] != "") {
             $acc = [
-                'fullname' => $this->post('params')['data']['name'],
-                'surname' => $this->post('params')['data']['surname']
+                'fullname' => $this->post('params')['data']['name'].' '.$this->post('params')['data']['surname'],
+                'company' => '',
+                'country' => $this->post('params')['data']['location'],
+                'avatar' => 'default_avatar.jpg',
+                'hourly_rate' => $this->post('params')['data']['rate'],
+                'company' => '-'
             ];
 
             $this->config->load('tank_auth',TRUE);
@@ -83,10 +87,10 @@ class Auth extends REST_Controller {
                 'password' => $hashed_password,
                 'type' => $this->post('params')['data']['profileType'],
                 'role_id' => 1,
-                'verified' => 'Pending'
+                'verified' => 'Confirmed'
             ];
 
-            $user_id = $this->Users->create_user($userprofile, $acc, FALSE);
+            $user_id = $this->Users->create_user($userprofile, $acc, TRUE);
             $this->response('Success', 200);
         } else {
             $this->response("Failed", 404);

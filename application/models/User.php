@@ -42,6 +42,7 @@ class User extends CI_Model
     // Get user information
     static function view_user($id)
     {
+        //->select('avatar, city, company, created, email, fullname, hourly_rate, type, user_id, username')
         return self::$db->where('id',$id)->get('users')->row();
     }
 
