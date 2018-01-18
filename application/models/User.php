@@ -99,6 +99,17 @@ class User extends CI_Model
         return self::$db->get('users')->result();
     }
 
+    static function get_user_details($userId)
+	{
+		$sql = "SELECT password, email FROM fx_users WHERE id = '".$userId."' ";
+		return self::$db->query($sql)->result();
+    }
+    
+    static function update_profile($data = array(), $userId) {
+		self::$db->where('user_id',$userId)->update('account_details',$data);
+		return self::$db->affected_rows();
+	}
+
     static function all_consultants(){
         self::$db->join('account_details', 'account_details.user_id = users.id');
         return self::$db->get('users')->result();

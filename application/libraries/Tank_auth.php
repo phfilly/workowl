@@ -804,7 +804,7 @@ class Tank_auth
                                                         $user->id,
                                                         $this->ci->config->item('login_record_ip', 'tank_auth'),
                                                         $this->ci->config->item('login_record_time', 'tank_auth'));
-                                        return TRUE;
+                                        return ["flag" => TRUE, "user_id" => $user->id];
                                 }
                         }
                 } else {

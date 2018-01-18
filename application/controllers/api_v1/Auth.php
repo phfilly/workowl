@@ -49,13 +49,57 @@ class Auth extends REST_Controller {
           $this->response(['key' => $this->tank_auth->create_remote_login($id), 'hash' => md5(strtolower(trim($this->post('params')['data']['email']))), 'user' => $user, 'account' => $account], 200);
       }
       $errors = $this->tank_auth->get_error_message();
-      // $token = Configuration::gateway()->clientToken()->generateWithoutCustomerIdSignature();
     $this->response($errors, 404);
+    }
+
+    function check_auth_options()
+    {
+        $this->headers();
+    }
+
+    function check_auth_post()
+    {
+        $this->headers();
+        $this->config->load('tank_auth',TRUE);
+        $data = $this->tank_auth->remote_login($this->post('key'));
+        
+        if ($data['flag']) {
+            $userObj = $this->User->get_user_details($data['user_id']);
+
+            $user = $this->User->view_user($data['user_id']);
+            $account = $this->User->profile_info($data['user_id']);
+            
+          if($user)
+            $this->response(['hash' => md5(strtolower(trim($user->email))), 'user' => $user, 'account' => $account], 200);
+          
+        } else {
+            $this->response("Failed", 404);
+        }
+    }
+
+    function updateProfile_post()
+    {
+      $this->headers();
+
+        $account = [
+          'profile_description' => $this->post('params')['data']['about'],
+          'category' => $this->post('params')['data']['category'],
+          'next_job_description' => $this->post('params')['data']['next'],
+          'education_history' => $this->post('params')['data']['education'],
+          'job_history' => $this->post('params')['data']['exp']
+        ];
+
+        $this->response($this->User->update_profile($account, $this->post('params')['userID']));
+    }
+
+    function updateProfile_options()
+    {
+      $this->headers();
     }
 
     function signup_options()
     {
-        $this->headers();
+      $this->headers();
     }
 
     function signup_post()
@@ -63,6 +107,7 @@ class Auth extends REST_Controller {
         $this->headers();
 
         //double check this
+        //TODO check if email exists
 
         if ($this->post('params')['data']['name'] != "") {
             $acc = [
@@ -91,7 +136,7 @@ class Auth extends REST_Controller {
             ];
 
             $user_id = $this->Users->create_user($userprofile, $acc, TRUE);
-            $this->response('Success', 200);
+            $this->response("Success", 200);
         } else {
             $this->response("Failed", 404);
         }

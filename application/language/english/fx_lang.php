@@ -868,6 +868,7 @@ $lang['project_categories'] = 'Categories';
 $lang['industries'] = 'Industries';
 $lang['Project Categories'] = 'Project Categories';
 $lang['view_projects'] = 'View Projects';
+$lang['applied_candidates'] = 'Applied Candidates';
 $lang['new_tax_rate'] = 'New Tax Rate';
 $lang['tax_rate_name'] = 'Tax Rate Name';
 $lang['tax_rate_percent'] = 'Tax Rate Percent';

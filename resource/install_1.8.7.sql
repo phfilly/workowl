@@ -47,6 +47,12 @@ CREATE TABLE `fx_account_details` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
+ALTER TABLE `fx_account_details` 
+	ADD COLUMN `profile_description` MEDIUMTEXT NULL AFTER `hourly_rate`,
+	ADD COLUMN `category` VARCHAR(45) NULL AFTER `profile_description`,
+	ADD COLUMN `next_job_description` MEDIUMTEXT NULL AFTER `category`,
+	ADD COLUMN `education_history` VARCHAR(350) NULL AFTER `next_job_description`;
+	ADD COLUMN `job_history` VARCHAR(45) NULL AFTER `education_history`;
 
 
 # Dump of table fx_activities
