@@ -111,7 +111,7 @@ class User extends CI_Model
 	}
 
     static function all_consultants(){
-        self::$db->join('account_details', 'account_details.user_id = users.id');
+        self::$db->join('account_details', 'account_details.user_id = users.id')->order_by('users.created','DESC');
         return self::$db->get('users')->result();
     }
 
