@@ -86,7 +86,8 @@ class Auth extends REST_Controller {
           'category' => $this->post('params')['data']['category'],
           'next_job_description' => $this->post('params')['data']['next'],
           'education_history' => $this->post('params')['data']['education'],
-          'job_history' => $this->post('params')['data']['exp']
+          'job_history' => $this->post('params')['data']['exp'],
+          'skills' => implode($this->post('params')['data']['skills']),
         ];
 
         $this->response($this->User->update_profile($account, $this->post('params')['userID']));
